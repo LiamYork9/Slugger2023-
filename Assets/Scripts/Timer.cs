@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Scripts
 {
 
     public class Timer : MonoBehaviour
     {
+
+        public UnityEvent timeOut;
         [Tooltip("When AutoStart is set to true the timer will start running when the game object Loads")]
         public bool autoStart = false;
         public bool autoReStart = false;
@@ -24,13 +27,22 @@ namespace Scripts
         void Start()
         {
             if (autoStart)
-            StartTimer();
+            StartTimer(countDownTime, autoReStart);
         }
 
         // Update is called once per frame
         void Update()
         {
+            if(timeLeft > 0.0f)  {
+                m_timeLeft -= (Time.deltaTime * timeScale);
 
+                if (timeLeft <= 0.0f)
+                {
+                    timeOut.Invoke();
+                    if (autoReStart)
+                        StartTimer(countDownTime, autoReStart);
+                }
+            }
         }
 
         // <summary>
