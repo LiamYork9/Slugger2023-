@@ -1,8 +1,8 @@
-using UnityEngine;
+  using UnityEngine;
 
 public class BatPostion : MonoBehaviour
 {
-    
+    public float speed = 10.0f;
 
     // Update is called once per frame
     void Update()
@@ -12,6 +12,6 @@ public class BatPostion : MonoBehaviour
 
         Vector3 moveDirection = new Vector3(xDirection, yDirection, 0.0f);
 
-        transform.position = moveDirection;
+        transform.position += moveDirection * speed ;
     }
 }
