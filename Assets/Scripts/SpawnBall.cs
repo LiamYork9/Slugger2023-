@@ -8,14 +8,15 @@ public class SpawnBall : MonoBehaviour
 
 
 {
-    public GameObject ballPrefab;
+    public GameObject ball;
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            Instantiate(ballPrefab, transform.position, Quaternion.identity);
+            Instantiate(ball, transform.position, Quaternion.identity);
         }
+      
     }
 }
